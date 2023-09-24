@@ -86,6 +86,7 @@ namespace Gtion.Networking
             if (IsOwner)
             {
                 GDi.Register(myLocalCharacter);
+                myLocalCharacter.InitLocalCharacter();
             }
 
             GameplayManager.Instance.RegisterPlayerObject(OwnerClientId, transform);
