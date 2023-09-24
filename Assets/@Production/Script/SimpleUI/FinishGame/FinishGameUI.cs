@@ -57,18 +57,19 @@ public class FinishGameUI : MonoBehaviour
 
     public void Initialized(ulong winner , EndGameState endGameState)
     {
-        switch (endGameState)
+        if (NetworkManager.Singleton.LocalClientId == winner)
         {
-            case EndGameState.Draw:
-                endGameText.text = "Game is Draw, GG";
-                break;
-            case EndGameState.Win:
-                endGameText.text = "You WIN!";
-                break;
-            case EndGameState.Lose:
-                endGameText.text = "You Lose :'";
-                break;
+            endGameText.text = "You WIN!";
         }
+        else if (endGameState == EndGameState.Draw)
+        {
+            endGameText.text = "Game is Draw, GG";
+        }
+        else
+        {
+            endGameText.text = "You Lose :'";
+        }
+
         UpdateView(true);
     }
 
